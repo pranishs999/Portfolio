@@ -1,0 +1,17 @@
+<section id="skills" class="min-h-screen flex flex-col justify-center bg-white py-20">
+  <h2 class="text-4xl font-bold text-center mb-8">Skills</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-6">
+    {% for skill in skills %}
+    <div class="bg-gray-100 shadow rounded p-6 text-center">
+      <span class="px-3 py-1 rounded-full text-white text-sm font-semibold
+        {% if skill.color == 'blue' %}bg-blue-500{% endif %}
+        {% if skill.color == 'indigo' %}bg-indigo-500{% endif %}
+        {% if skill.color == 'green' %}bg-green-500{% endif %}
+        {% if skill.color == 'red' %}bg-red-500{% endif %}
+        {% if skill.color == 'cyan' %}bg-cyan-500{% endif %}
+        {% if skill.color == 'yellow' %}bg-yellow-400{% endif %}
+      ">{{ skill.name }}</span>
+    </div>
+    {% endfor %}
+  </div>
+</section>

@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="{% static 'css/dist/styles.css' %}" rel="stylesheet">
+<title>Pranish Shrestha Portfolio</title>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans scroll-smooth">
+
+<nav class="fixed top-0 left-0 w-full bg-blue-600 text-white py-4 z-50 shadow">
+  <div class="container mx-auto flex justify-center space-x-6">
+    <a href="#skills" class="hover:underline">Skills</a>
+    <a href="#projects" class="hover:underline">Projects</a>
+    <a href="#education" class="hover:underline">Education</a>
+    <a href="#experience" class="hover:underline">Experience</a>
+    <a href="#achievements" class="hover:underline">Achievements</a>
+    <a href="#contact" class="hover:underline">Contact</a>
+  </div>
+</nav>
+
+<main class="pt-24">
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="bg-blue-600 text-white py-6 text-center">
+  &copy; 2025 Pranish Shrestha | All rights reserved
+</footer>
+
+</body>
+</html>
