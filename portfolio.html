@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pranish Shrestha | Backend Developer</title>
+    <meta name="description" content="Pranish Shrestha — Backend Developer & Educator from Hetauda, Nepal. Django, Python, Flask." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: '#0a1320',
+                        panel: '#0f1c2e',
+                        panel2: '#152a44',
+                        line: '#1d3354',
+                        accent: '#10b981',
+                        accent2: '#34d399',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        .reveal { animation: revealIn 0.8s ease-out forwards; }
+        @keyframes revealIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .tag { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; border: 1px solid #1d3354; font-size: 0.75rem; color: #cbd5e1; }
+        .tag:hover { border-color: #10b981; color: #10b981; transition: all 0.3s; }
+        .project-card { border: 1px solid #1d3354; border-radius: 0.75rem; padding: 1.5rem; background: #0f1c2e; transition: all 0.3s; }
+        .project-card:hover { border-color: #10b981; background: #152a44; transform: translateY(-4px); }
+    </style>
+</head>
+<body class="bg-ink text-slate-100 font-sans antialiased">
+
+<!-- NAV -->
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-ink/70 border-b border-line/50">
+    <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="#hero" class="text-accent font-bold text-xl tracking-tight">PS<span class="text-accent2">.</span></a>
+        <ul class="hidden md:flex items-center gap-8 text-sm text-slate-300">
+            <li><a href="#about" class="hover:text-accent transition">About</a></li>
+            <li><a href="#skills" class="hover:text-accent transition">Skills</a></li>
+            <li><a href="#experience" class="hover:text-accent transition">Experience</a></li>
+            <li><a href="#projects" class="hover:text-accent transition">Projects</a></li>
+            <li><a href="#contact" class="hover:text-accent transition">Contact</a></li>
+        </ul>
+        <a href="#contact" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-accent text-ink font-semibold text-sm hover:bg-accent2 transition">Hire Me</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section id="hero" class="pt-32 pb-20 px-6">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7 reveal">
+            <span class="inline-block font-mono text-xs text-accent border border-accent/40 rounded-full px-3 py-1 mb-6">Hello, World</span>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.05]">I'm Pranish<br/>Shrestha<span class="text-accent">.</span></h1>
+            <h2 class="mt-4 text-2xl md:text-3xl text-slate-300 font-semibold">Backend Developer <span class="text-accent">&</span> Educator</h2>
+            <p class="mt-6 max-w-xl text-slate-400 text-lg leading-relaxed">
+                Django learner & practitioner passionate about solving real-world problems.
+                Bridging technical logic with classroom education to build the future.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-4">
+                <a href="#contact" class="px-6 py-3 rounded-lg bg-accent text-ink font-semibold hover:bg-accent2 transition">Contact Me</a>
+                <a href="#projects" class="px-6 py-3 rounded-lg border border-line hover:border-accent text-slate-200 transition">View Projects</a>
+                <a href="#" class="px-6 py-3 rounded-lg border border-line hover:border-accent text-slate-200 transition inline-flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    Download CV
+                </a>
+            </div>
+            <div class="mt-8 flex items-center gap-5 text-slate-400">
+                <a href="https://github.com/pranishs999" target="_blank" rel="noopener" class="hover:text-accent transition" aria-label="GitHub">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.597 1.028 2.688 0 3.848-2.339 4.686-4.566 4.935.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12c0-5.523-4.477-10-10-10z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/pranish-shrestha-2262a322a/" target="_blank" rel="noopener" class="hover:text-accent transition" aria-label="LinkedIn">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="https://www.facebook.com/pranishstha999" target="_blank" rel="noopener" class="hover:text-accent transition" aria-label="Facebook">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="lg:col-span-5 reveal">
+            <div class="relative aspect-square max-w-md mx-auto">
+                <div class="absolute inset-0 rounded-3xl bg-gradient-to-br from-accent/30 to-transparent blur-2xl"></div>
+                <div class="relative w-full h-full rounded-3xl bg-panel border border-line overflow-hidden flex items-center justify-center">
+                    <div class="text-center p-8">
+                        <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-accent to-accent2 flex items-center justify-center text-ink text-5xl font-extrabold shadow-2xl">PS</div>
+                        <p class="mt-6 font-mono text-sm text-slate-400">// crafted with code & care</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-20 px-6 border-t border-line/50">
+    <div class="max-w-7xl mx-auto reveal">
+        <h2 class="text-4xl font-bold mb-2"><span class="text-accent font-mono text-2xl mr-2">01.</span>About Me</h2>
+        <div class="h-1 w-20 bg-accent rounded-full mb-10"></div>
+        <div class="grid lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2">
+                <p class="text-slate-400 leading-relaxed mb-4">
+                    I'm a passionate backend developer and educator based in Hetauda, Nepal. With a strong foundation in Python and Django, I enjoy building scalable web applications that solve real-world problems.
+                </p>
+                <p class="text-slate-400 leading-relaxed mb-4">
+                    Currently, I'm teaching Computer Science at Zenith International Secondary School, where I guide students through programming fundamentals and database concepts. I believe in bridging the gap between theoretical knowledge and practical application.
+                </p>
+                <p class="text-slate-400 leading-relaxed">
+                    When I'm not coding or teaching, you'll find me exploring new technologies, contributing to open-source projects, or working on personal learning projects.
+                </p>
+            </div>
+            <div class="bg-panel border border-line rounded-xl p-6 h-fit">
+                <h3 class="font-semibold text-accent mb-4">Quick Facts</h3>
+                <ul class="space-y-2 text-sm text-slate-400">
+                    <li>📍 Based in Hetauda, Nepal</li>
+                    <li>🎓 BSc. CSIT (In Progress)</li>
+                    <li>👨‍🏫 Secondary Teacher</li>
+                    <li>💻 Django & Python Expert</li>
+                    <li>🚀 Always Learning</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="py-20 px-6 border-t border-line/50">
+    <div class="max-w-7xl mx-auto reveal">
+        <h2 class="text-4xl font-bold mb-2"><span class="text-accent font-mono text-2xl mr-2">02.</span>Skills</h2>
+        <div class="h-1 w-20 bg-accent rounded-full mb-10"></div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-panel border border-line rounded-lg p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-accent font-semibold">Python</span>
+                    <span class="text-xs text-slate-500">90%</span>
+                </div>
+                <div class="w-full bg-panel2 rounded-full h-2"><div class="bg-accent h-2 rounded-full" style="width: 90%"></div></div>
+            </div>
+            <div class="bg-panel border border-line rounded-lg p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-accent font-semibold">Django</span>
+                    <span class="text-xs text-slate-500">85%</span>
+                </div>
+                <div class="w-full bg-panel2 rounded-full h-2"><div class="bg-accent h-2 rounded-full" style="width: 85%"></div></div>
+            </div>
+            <div class="bg-panel border border-line rounded-lg p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-accent font-semibold">Flask</span>
+                    <span class="text-xs text-slate-500">80%</span>
+                </div>
+                <div class="w-full bg-panel2 rounded-full h-2"><div class="bg-accent h-2 rounded-full" style="width: 80%"></div></div>
+            </div>
+            <div class="bg-panel border border-line rounded-lg p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-accent font-semibold">HTML & CSS</span>
+                    <span class="text-xs text-slate-500">90%</span>
+                </div>
+                <div class="w-full bg-panel2 rounded-full h-2"><div class="bg-accent h-2 rounded-full" style="width: 90%"></div></div>
+            </div>
+            <div class="bg-panel border border-line rounded-lg p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-accent font-semibold">Tailwind CSS</span>
+                    <span class="text-xs text-slate-500">85%</span>
+                </div>
+                <div class="w-full bg-panel2 rounded-full h-2"><div class="bg-accent h-2 rounded-full" style="width: 85%"></div></div>
+            </div>
+            <div class="bg-panel border border-line rounded-lg p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-accent font-semibold">SQL / Database</span>
+                    <span class="text-xs text-slate-500">75%</span>
+                </div>
+                <div class="w-full bg-panel2 rounded-full h-2"><div class="bg-accent h-2 rounded-full" style="width: 75%"></div></div>
+            </div>
+            <div class="bg-panel border border-line rounded-lg p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-accent font-semibold">C / C++</span>
+                    <span class="text-xs text-slate-500">70%</span>
+                </div>
+                <div class="w-full bg-panel2 rounded-full h-2"><div class="bg-accent h-2 rounded-full" style="width: 70%"></div></div>
+            </div>
+            <div class="bg-panel border border-line rounded-lg p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-accent font-semibold">Graphics Design</span>
+                    <span class="text-xs text-slate-500">60%</span>
+                </div>
+                <div class="w-full bg-panel2 rounded-full h-2"><div class="bg-accent h-2 rounded-full" style="width: 60%"></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="py-20 px-6 border-t border-line/50">
+    <div class="max-w-7xl mx-auto reveal">
+        <h2 class="text-4xl font-bold mb-2"><span class="text-accent font-mono text-2xl mr-2">03.</span>Experience</h2>
+        <div class="h-1 w-20 bg-accent rounded-full mb-10"></div>
+        <div class="space-y-8">
+            <div class="bg-panel border border-line rounded-lg p-8">
+                <div class="flex items-start justify-between mb-2">
+                    <div>
+                        <h3 class="text-xl font-semibold">Secondary Teacher</h3>
+                        <p class="text-accent font-semibold">Zenith International Secondary School, Hetauda</p>
+                    </div>
+                    <span class="text-sm text-slate-400 bg-panel2 px-3 py-1 rounded-full">Current</span>
+                </div>
+                <p class="text-slate-400 text-sm mb-4">May 2025 - Present</p>
+                <p class="text-slate-300">Teaching Computer Science with a focus on programming fundamentals (Python, C/C++) and SQL databases to secondary students.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="py-20 px-6 border-t border-line/50">
+    <div class="max-w-7xl mx-auto reveal">
+        <h2 class="text-4xl font-bold mb-2"><span class="text-accent font-mono text-2xl mr-2">04.</span>Projects</h2>
+        <div class="h-1 w-20 bg-accent rounded-full mb-10"></div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Project Cards -->
+            <div class="project-card">
+                <h3 class="text-lg font-semibold mb-2">Portfolio</h3>
+                <p class="text-slate-400 text-sm mb-4">Personal portfolio website showcasing projects, skills, and experience.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="tag">Web</span>
+                    <span class="tag">Frontend</span>
+                </div>
+                <a href="https://github.com/pranishs999/Portfolio" target="_blank" class="text-accent text-sm hover:text-accent2 transition">View on GitHub →</a>
+            </div>
+
+            <div class="project-card">
+                <h3 class="text-lg font-semibold mb-2">Library Management System</h3>
+                <p class="text-slate-400 text-sm mb-4">Comprehensive LMS allowing management of books, users, and borrow records.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="tag">Django</span>
+                    <span class="tag">LMS</span>
+                </div>
+                <a href="https://github.com/pranishs999/Library_Management_system-LMS" target="_blank" class="text-accent text-sm hover:text-accent2 transition">View on GitHub →</a>
+            </div>
+
+            <div class="project-card">
+                <h3 class="text-lg font-semibold mb-2">Weather App</h3>
+                <p class="text-slate-400 text-sm mb-4">Web-based weather application built with Django. Fetches real-time data and displays accurate forecasts.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="tag">Django</span>
+                </div>
+                <a href="https://github.com/pranishs999/Weather-app" target="_blank" class="text-accent text-sm hover:text-accent2 transition">View on GitHub →</a>
+            </div>
+
+            <div class="project-card">
+                <h3 class="text-lg font-semibold mb-2">Simple Calculator CLI</h3>
+                <p class="text-slate-400 text-sm mb-4">A clean command-line calculator handling core arithmetic operations with input validation.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="tag">Python CLI</span>
+                </div>
+                <a href="https://github.com/pranishs999/Simple-Calculator-CLI" target="_blank" class="text-accent text-sm hover:text-accent2 transition">View on GitHub →</a>
+            </div>
+
+            <div class="project-card">
+                <h3 class="text-lg font-semibold mb-2">To-Do App CLI</h3>
+                <p class="text-slate-400 text-sm mb-4">Command-line task manager for adding, listing, and completing daily tasks with persistent storage.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="tag">Python CLI</span>
+                </div>
+                <a href="https://github.com/pranishs999/To-Do-App-CLI" target="_blank" class="text-accent text-sm hover:text-accent2 transition">View on GitHub →</a>
+            </div>
+
+            <div class="project-card">
+                <h3 class="text-lg font-semibold mb-2">GradeBook CLI</h3>
+                <p class="text-slate-400 text-sm mb-4">A robust CLI based gradebook system to manage student records, grades, and data using file handling.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="tag">Python CLI</span>
+                </div>
+                <a href="https://github.com/pranishs999/GradeBook-CLI" target="_blank" class="text-accent text-sm hover:text-accent2 transition">View on GitHub →</a>
+            </div>
+
+            <div class="project-card">
+                <h3 class="text-lg font-semibold mb-2">Ollama Dashboard</h3>
+                <p class="text-slate-400 text-sm mb-4">Dashboard interface for interacting with locally-hosted Ollama LLM models.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="tag">LLM</span>
+                    <span class="tag">Dashboard</span>
+                </div>
+                <a href="https://github.com/pranishs999/ollama_dashboard" target="_blank" class="text-accent text-sm hover:text-accent2 transition">View on GitHub →</a>
+            </div>
+
+            <div class="project-card">
+                <h3 class="text-lg font-semibold mb-2">AVA</h3>
+                <p class="text-slate-400 text-sm mb-4">An AI virtual assistant experiment exploring conversational interaction and task automation.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="tag">AI</span>
+                    <span class="tag">Python</span>
+                </div>
+                <a href="https://github.com/pranishs999/AVA" target="_blank" class="text-accent text-sm hover:text-accent2 transition">View on GitHub →</a>
+            </div>
+
+            <div class="project-card">
+                <h3 class="text-lg font-semibold mb-2">Copy Submission Recorder</h3>
+                <p class="text-slate-400 text-sm mb-4">A utility for tracking and recording student copy/assignment submissions.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="tag">Python</span>
+                    <span class="tag">Education</span>
+                </div>
+                <a href="https://github.com/pranishs999/Copy_sumibtion_recorder" target="_blank" class="text-accent text-sm hover:text-accent2 transition">View on GitHub →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="py-20 px-6 border-t border-line/50">
+    <div class="max-w-7xl mx-auto reveal">
+        <h2 class="text-4xl font-bold mb-2"><span class="text-accent font-mono text-2xl mr-2">05.</span>Education</h2>
+        <div class="h-1 w-20 bg-accent rounded-full mb-10"></div>
+        <div class="space-y-6">
+            <div class="bg-panel border border-line rounded-lg p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-lg font-semibold">BSc. CSIT</h3>
+                    <span class="text-sm text-slate-500">Dec 2024 - Present</span>
+                </div>
+                <p class="text-slate-400">Hetauda City College</p>
+            </div>
+            <div class="bg-panel border border-line rounded-lg p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-lg font-semibold">SLC (+2) Science</h3>
+                    <span class="text-sm text-slate-500">2020 - 2022</span>
+                </div>
+                <p class="text-slate-400">New Capital College, Tandi</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-20 px-6 border-t border-line/50">
+    <div class="max-w-4xl mx-auto reveal">
+        <h2 class="text-4xl font-bold mb-2"><span class="text-accent font-mono text-2xl mr-2">06.</span>Get In Touch</h2>
+        <div class="h-1 w-20 bg-accent rounded-full mb-10"></div>
+        <p class="text-slate-400 text-lg mb-8">I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hello, feel free to reach out!</p>
+        
+        <form id="contactForm" class="space-y-6 bg-panel border border-line rounded-lg p-8">
+            <div>
+                <label class="block text-sm font-semibold mb-2">Name</label>
+                <input type="text" id="name" required class="w-full bg-panel2 border border-line rounded-lg px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-accent" placeholder="Your name">
+            </div>
+            <div>
+                <label class="block text-sm font-semibold mb-2">Email</label>
+                <input type="email" id="email" required class="w-full bg-panel2 border border-line rounded-lg px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-accent" placeholder="your@email.com">
+            </div>
+            <div>
+                <label class="block text-sm font-semibold mb-2">Subject</label>
+                <input type="text" id="subject" required class="w-full bg-panel2 border border-line rounded-lg px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-accent" placeholder="What's this about?">
+            </div>
+            <div>
+                <label class="block text-sm font-semibold mb-2">Message</label>
+                <textarea id="message" rows="5" required class="w-full bg-panel2 border border-line rounded-lg px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-accent resize-none" placeholder="Your message..."></textarea>
+            </div>
+            <button type="submit" class="w-full px-6 py-3 rounded-lg bg-accent text-ink font-semibold hover:bg-accent2 transition">
+                Send Message
+            </button>
+            <p id="response" class="text-center text-sm text-slate-400"></p>
+        </form>
+
+        <div class="mt-12 pt-8 border-t border-line/50 text-center text-slate-500 text-sm">
+            <p>© 2026 Pranish Shrestha. All rights reserved.</p>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Form submission handler
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+        const responseEl = document.getElementById('response');
+        
+        // Validate form
+        if (!name || !email || !subject || !message) {
+            responseEl.textContent = '❌ Please fill in all fields';
+            responseEl.style.color = '#ef4444';
+            return;
+        }
+        
+        // Show success message
+        responseEl.textContent = '✅ Message sent successfully! I\'ll get back to you soon.';
+        responseEl.style.color = '#10b981';
+        
+        // Reset form
+        this.reset();
+        
+        // Clear message after 5 seconds
+        setTimeout(() => {
+            responseEl.textContent = '';
+        }, 5000);
+    });
+
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href !== '#') {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

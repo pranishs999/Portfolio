@@ -1,0 +1,256 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="pt-32 pb-20 px-6">
+  <div class="max-w-5xl mx-auto">
+
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-10">
+      <div>
+        <h1 class="text-4xl font-extrabold tracking-tight">Dashboard</h1>
+        <p class="mt-2 text-slate-400">Manage your portfolio content</p>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="text-sm text-slate-400 font-mono">{{ user.username }}</span>
+        <a href="{% url 'main:logout_view' %}" class="px-4 py-2 rounded-lg border border-line hover:border-red-400 text-slate-300 hover:text-red-400 text-sm transition">Logout</a>
+      </div>
+    </div>
+
+    <!-- Messages -->
+    {% if messages %}
+    <div class="mb-8 space-y-3">
+      {% for message in messages %}
+      <div class="px-5 py-3 rounded-lg border {% if message.tags == 'success' %}bg-accent/10 border-accent/40 text-accent2{% elif message.tags == 'error' %}bg-red-500/10 border-red-500/40 text-red-400{% else %}bg-panel border-line text-slate-300{% endif %} text-sm flex items-center gap-3">
+        {% if message.tags == 'success' %}
+        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+        {% elif message.tags == 'error' %}
+        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        {% endif %}
+        {{ message }}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Three-Column Grid of Forms -->
+    <div class="grid lg:grid-cols-3 gap-8">
+
+      <!-- Experience Form -->
+      <div class="bg-panel rounded-2xl border border-line p-6 hover:border-accent/40 transition">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
+            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div>
+            <h2 class="text-lg font-bold">Add Experience</h2>
+            <p class="text-xs text-slate-500">Work & teaching roles</p>
+          </div>
+        </div>
+        <form method="post" class="space-y-4">
+          {% csrf_token %}
+          <input type="hidden" name="form_type" value="experience">
+          {% for field in experience_form %}
+          <div>
+            <label for="{{ field.id_for_label }}" class="block mb-1.5 text-sm font-medium text-slate-300">{{ field.label }}{% if field.field.required %} <span class="text-accent">*</span>{% endif %}</label>
+            {{ field }}
+            {% if field.errors %}
+            <p class="mt-1 text-xs text-red-400">{{ field.errors.0 }}</p>
+            {% endif %}
+          </div>
+          {% endfor %}
+          <button type="submit" class="w-full mt-2 px-5 py-2.5 rounded-lg bg-accent text-ink font-semibold text-sm hover:bg-accent2 transition flex items-center justify-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            Add Experience
+          </button>
+        </form>
+      </div>
+
+      <!-- Training Form -->
+      <div class="bg-panel rounded-2xl border border-line p-6 hover:border-accent/40 transition">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
+            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+          </div>
+          <div>
+            <h2 class="text-lg font-bold">Add Training</h2>
+            <p class="text-xs text-slate-500">Certifications & workshops</p>
+          </div>
+        </div>
+        <form method="post" class="space-y-4">
+          {% csrf_token %}
+          <input type="hidden" name="form_type" value="training">
+          {% for field in training_form %}
+          <div>
+            <label for="{{ field.id_for_label }}" class="block mb-1.5 text-sm font-medium text-slate-300">{{ field.label }}{% if field.field.required %} <span class="text-accent">*</span>{% endif %}</label>
+            {{ field }}
+            {% if field.errors %}
+            <p class="mt-1 text-xs text-red-400">{{ field.errors.0 }}</p>
+            {% endif %}
+          </div>
+          {% endfor %}
+          <button type="submit" class="w-full mt-2 px-5 py-2.5 rounded-lg bg-accent text-ink font-semibold text-sm hover:bg-accent2 transition flex items-center justify-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            Add Training
+          </button>
+        </form>
+      </div>
+
+      <!-- Achievement Form -->
+      <div class="bg-panel rounded-2xl border border-line p-6 hover:border-accent/40 transition">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
+            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+          </div>
+          <div>
+            <h2 class="text-lg font-bold">Add Achievement</h2>
+            <p class="text-xs text-slate-500">Hackathons & competitions</p>
+          </div>
+        </div>
+        <form method="post" class="space-y-4">
+          {% csrf_token %}
+          <input type="hidden" name="form_type" value="achievement">
+          {% for field in achievement_form %}
+          <div>
+            <label for="{{ field.id_for_label }}" class="block mb-1.5 text-sm font-medium text-slate-300">{{ field.label }}{% if field.field.required %} <span class="text-accent">*</span>{% endif %}</label>
+            {{ field }}
+            {% if field.errors %}
+            <p class="mt-1 text-xs text-red-400">{{ field.errors.0 }}</p>
+            {% endif %}
+          </div>
+          {% endfor %}
+          <button type="submit" class="w-full mt-2 px-5 py-2.5 rounded-lg bg-accent text-ink font-semibold text-sm hover:bg-accent2 transition flex items-center justify-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            Add Achievement
+          </button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Existing Entries -->
+    <div class="mt-16 space-y-12">
+
+      <!-- Existing Experience -->
+      <div>
+        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+          <span class="text-accent font-mono text-sm">01.</span> Existing Experience
+          <span class="text-xs font-mono text-slate-500">({{ experiences|length }})</span>
+        </h3>
+        {% if experiences %}
+        <div class="grid md:grid-cols-2 gap-4">
+          {% for e in experiences %}
+          <div class="p-4 bg-panel rounded-xl border border-line flex items-start justify-between group">
+            <div>
+              <h4 class="font-semibold flex items-center gap-2">{{ e.role }}{% if e.current %}<span class="text-[10px] px-2 py-0.5 bg-accent/20 text-accent rounded">Current</span>{% endif %}</h4>
+              <p class="text-sm text-slate-400">{{ e.org }}</p>
+              <p class="text-xs text-slate-500 font-mono mt-1">{{ e.period }}</p>
+            </div>
+            <form method="post" class="opacity-0 group-hover:opacity-100 transition">
+              {% csrf_token %}
+              <input type="hidden" name="form_type" value="delete_experience">
+              <input type="hidden" name="item_id" value="{{ e.id }}">
+              <button type="submit" class="p-1.5 rounded-lg hover:bg-red-500/10 text-slate-500 hover:text-red-400 transition" title="Delete">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+              </button>
+            </form>
+          </div>
+          {% endfor %}
+        </div>
+        {% else %}
+        <p class="text-slate-500 text-sm italic">No experience entries yet.</p>
+        {% endif %}
+      </div>
+
+      <!-- Existing Training -->
+      <div>
+        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+          <span class="text-accent font-mono text-sm">02.</span> Existing Training
+          <span class="text-xs font-mono text-slate-500">({{ trainings|length }})</span>
+        </h3>
+        {% if trainings %}
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {% for t in trainings %}
+          <div class="p-4 bg-panel rounded-xl border border-line flex items-start justify-between group">
+            <div>
+              <h4 class="font-semibold">{{ t.title }}</h4>
+              <p class="text-sm text-accent2">{{ t.issuer }}</p>
+            </div>
+            <form method="post" class="opacity-0 group-hover:opacity-100 transition">
+              {% csrf_token %}
+              <input type="hidden" name="form_type" value="delete_training">
+              <input type="hidden" name="item_id" value="{{ t.id }}">
+              <button type="submit" class="p-1.5 rounded-lg hover:bg-red-500/10 text-slate-500 hover:text-red-400 transition" title="Delete">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+              </button>
+            </form>
+          </div>
+          {% endfor %}
+        </div>
+        {% else %}
+        <p class="text-slate-500 text-sm italic">No training entries yet.</p>
+        {% endif %}
+      </div>
+
+      <!-- Existing Achievements -->
+      <div>
+        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+          <span class="text-accent font-mono text-sm">03.</span> Existing Achievements
+          <span class="text-xs font-mono text-slate-500">({{ achievements|length }})</span>
+        </h3>
+        {% if achievements %}
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {% for a in achievements %}
+          <div class="p-4 bg-panel rounded-xl border border-line flex items-start justify-between group">
+            <div>
+              <h4 class="font-semibold">{{ a.name }}</h4>
+              <p class="text-xs text-slate-500 mt-1">{{ a.year }} · {{ a.result }}</p>
+            </div>
+            <form method="post" class="opacity-0 group-hover:opacity-100 transition">
+              {% csrf_token %}
+              <input type="hidden" name="form_type" value="delete_achievement">
+              <input type="hidden" name="item_id" value="{{ a.id }}">
+              <button type="submit" class="p-1.5 rounded-lg hover:bg-red-500/10 text-slate-500 hover:text-red-400 transition" title="Delete">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+              </button>
+            </form>
+          </div>
+          {% endfor %}
+        </div>
+        {% else %}
+        <p class="text-slate-500 text-sm italic">No achievement entries yet.</p>
+        {% endif %}
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const currentCheckbox = document.getElementById('id_current');
+    if (currentCheckbox) {
+      // The end date field's container (the parent div of the label and input)
+      const endDateInput = document.getElementById('id_period_end');
+      if (endDateInput) {
+        const endDateContainer = endDateInput.closest('div');
+        
+        function toggleEndDate() {
+          if (currentCheckbox.checked) {
+            endDateContainer.style.display = 'none';
+          } else {
+            endDateContainer.style.display = 'block';
+          }
+        }
+        
+        // Initial state
+        toggleEndDate();
+        
+        // On change
+        currentCheckbox.addEventListener('change', toggleEndDate);
+      }
+    }
+  });
+</script>
+{% endblock %}
